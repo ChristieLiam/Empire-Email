@@ -119,7 +119,7 @@ These accounts are included in the SQL dump for testing:
 
 ## File Structure
 
-    lchristie/
+    Empire-Email/
     ├── assets/
     │   └── bootstrap/
     │       └── sql/
