@@ -1,0 +1,22 @@
+{
+  "name": "lchristie",
+  "version": "1.0.0",
+  "description": "**Name:** Liam Christie   **Banner-ID:** B00968728   **Date:** March 28, 2025   **Version** Progress Commit",
+  "main": "db.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.cs.dal.ca/courses/2025-winter/csci-2170/assignments/a4/lchristie.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "mysql": "^2.18.1"
+  }
+}

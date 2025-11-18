@@ -1,0 +1,81 @@
+<div class="card-body">
+    <!-- Title -->
+    <h2 class="card-title text-center mb-4 text-primary">Compose Email</h2>
+
+    <!-- Email Form -->
+    <form id="email-form">
+        <!-- Recipient Email Field -->
+        <div class="mb-3">
+            <label class="form-label" for="i-email">Recipient Email</label>
+            <input class="form-control" id="i-email" name="recipient-email" placeholder="Enter recipient's email"
+                   required type="email">
+        </div>
+
+        <!-- Subject Field -->
+        <div class="mb-3">
+            <label class="form-label" for="i-subject">Subject</label>
+            <input class="form-control" id="i-subject" name="subject" placeholder="Enter subject" required type="text">
+        </div>
+
+        <!-- Message Body Field -->
+        <div class="mb-3">
+            <label class="form-label" for="i-body">Message</label>
+            <textarea class="form-control" id="i-body" name="message" placeholder="Write your message..." required
+                      rows="5"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" id="submit-btn" type="submit">Send Email</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Handle form submission
+    document.getElementById("email-form").addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevent the default form submission behavior (page reload)
+
+        // Get input values from the form
+        const recipient_email = document.getElementById("i-email").value.trim();
+        const subject = document.getElementById("i-subject").value.trim();
+        const body = document.getElementById("i-body").value.trim();
+
+        // Prepare the data to be sent to the server
+        const formData = {
+            recipient_email,
+            subject,
+            body
+        };
+
+        try {
+            // Send a POST request to the backend API route
+            const response = await fetch('/home/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' // Tell the server we're sending JSON
+                },
+                body: JSON.stringify(formData) // Convert JS object to JSON string
+            });
+
+            // Parse JSON response
+            const result = await response.json();
+
+            // If the response was OK (status 200)
+            if (response.ok) {
+                alert("Email Sent!!");
+                // Redirect user to the sent emails page
+                window.location.href = "/home/sent";
+            } else {
+                // Show the error message returned from the server
+                alert(`Error: ${result.message}`);
+            }
+
+        } catch (error) {
+            // Catch any unexpected error (e.g., network issues)
+            console.error('Error:', error);
+            alert("An error occurred while sending the email.");
+        }
+
+    });
+</script>

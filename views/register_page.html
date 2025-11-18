@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account | Empire Email</title>
+
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- bcrypt.js for optional client-side password hashing (if you decide to hash before sending) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+</head>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Empire Email</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<body class="bg-light">
+
+<!-- Main Registration Form Container -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Card UI -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Create an account to login to this website</h2>
+
+                    <!-- Registration Form -->
+                    <form id="registration-form">
+                        <!-- First Name Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="i-fname">First Name</label>
+                            <input class="form-control" id="i-fname" name="fname" required type="text">
+                        </div>
+
+                        <!-- Last Name Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="i-lname">Last Name</label>
+                            <input class="form-control" id="i-lname" name="lname" required type="text">
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="i-email">Email</label>
+                            <input class="form-control" id="i-email" name="email" required type="email">
+                        </div>
+
+                        <!-- Phone Field (must be 10 digits) -->
+                        <div class="mb-3">
+                            <label class="form-label" for="i-phone">Phone Number</label>
+                            <input class="form-control" id="i-phone" name="phone"
+                                   pattern="^\d{10}$"
+                                   placeholder="Enter 10-digit phone number"
+                                   type="tel">
+                        </div>
+
+                        <!-- Date of Birth Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="i-dob">Date Of Birth</label>
+                            <input class="form-control" id="i-dob" name="dob" type="date">
+                        </div>
+
+                        <!-- Password Field with complexity rules -->
+                        <div class="mb-3">
+                            <label class="form-label" for="i-pswd">Password</label>
+                            <input class="form-control" id="i-pswd" name="pswd"
+                                   pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$"
+                                   required
+                                   title="At least one uppercase, one lowercase, one digit, one special character, and minimum 8 characters"
+                                   type="password">
+                        </div>
+
+                        <!-- Confirm Password Field -->
+                        <div class="mb-3">
+                            <label class="form-label" for="i-pswd-match">Confirm Password</label>
+                            <input class="form-control" id="i-pswd-match" name="pswd-match" required type="password">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" id="submit-btn" type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for handling form submission -->
+<script>
+    document.getElementById("registration-form").addEventListener("submit", async function (event) {
+        event.preventDefault(); // Prevents the page from refreshing
+
+        // Grab and sanitize form values
+        const fname = document.getElementById("i-fname").value.trim();
+        const lname = document.getElementById("i-lname").value.trim();
+        const email = document.getElementById("i-email").value.trim();
+        const phone = document.getElementById("i-phone").value.trim();
+        const dob = document.getElementById("i-dob").value;
+        const pswd1 = document.getElementById("i-pswd").value;
+        const pswd2 = document.getElementById("i-pswd-match").value;
+
+        // Check if passwords match
+        if (pswd1 !== pswd2) {
+            alert("Passwords must match!");
+            return;
+        }
+
+        // Optionally hash password client-side (can be skipped if hashing on backend)
+        // const pswd = await bcrypt.hash(pswd1, 10);
+
+        const pswd = pswd1; // Use plain password here, assuming server handles hashing
+
+        // Create form data object
+        const formData = {
+            fname,
+            lname,
+            email,
+            phone,
+            pswd,
+            dob
+        };
+
+        try {
+            // Send form data to the backend
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert("Registration successful!");
+                window.location.href = "/login"; // Redirect to login page
+            } else {
+                alert(`Error: ${result.message}`); // Show server-side error message
+            }
+
+        } catch (error) {
+            console.error('Error:', error);
+            alert("An error occurred while registering.");
+        }
+    });
+
+    // Optional redirect function
+    function redirect_to_welcome() {
+        window.location.href = "/";
+    }
+</script>
+
+</body>
+
+<!-- Footer -->
+<footer class="bg-primary text-white text-center py-3 mt-5">
+    <p class="mb-0">2025 Copyright &copy; This Website</p>
+</footer>
+</html>
