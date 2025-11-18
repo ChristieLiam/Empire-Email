@@ -5,11 +5,6 @@ It includes secure authentication, a Node.js/Express backend, and a MySQL databa
 
 ---
 
-## Live Demo
-Add your deployed project link here once hosted.
-
----
-
 ## Features
 
 ### Secure User Authentication
@@ -59,11 +54,11 @@ Add your deployed project link here once hosted.
 
 ### Step 1: Clone the repository
 
-    git clone [your-repo-url]
+    git clone https://github.com/ChristieLiam/Empire-Email.git
 
 ### Step 2: Navigate into the project directory
 
-    cd [project-folder-name]
+    cd Empire-Email
 
 ### Step 3: Install dependencies
 
