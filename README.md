@@ -2,6 +2,8 @@
 
 ## This Version Of The Email Service Is Being Overhauled  |  Site may not be fully functional.
 
+BACKEND IS CURRENTLY NOT RUNNING
+
 ## Future Improvements
 
 - Password reset functionality  
