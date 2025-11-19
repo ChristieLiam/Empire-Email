@@ -12,6 +12,10 @@ BACKEND IS CURRENTLY NOT RUNNING
 - Search and filtering of emails  
 - Optional dark mode  
 - Updated Design
+    - New menus
+    - Redsigned Layouts
+    - More Interactive
+    - Im spitballing here dont judge me
 - New Pages
 
 ---
