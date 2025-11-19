@@ -1,158 +1,93 @@
-# Empire Email — Full-Stack Webmail Client
+# Assignment 4 - Email Application CSCI2170
 
-Empire Email is a full-stack web application that simulates a complete, self-contained email platform.  
-It includes secure authentication, a Node.js/Express backend, and a MySQL database for managing users and messages.
+**Name:** Liam Christie  
+**Banner-ID:** B00968728  
+**Date:** March 28, 2025  
+**Version** Final Version
 
----
+## Application Name and Description
 
-## Features
+**Application Name:** EMPIRE EMAIL
 
-### Secure User Authentication
-- Full registration and login system  
-- Passwords hashed using Node.js crypto module (SHA-256)
+**Description:** 
+Empire Email is a simple yet powerful email management application designed for seamless communication and easy access to email services. 
+Whether you're looking to send, receive, or manage emails, this application offers an intuitive and user-friendly interface to enhance your email experience.
 
-### Session Management
-- Persistent, secure login state using express-session
-
-### Email Functionality
-- Compose and send emails to other registered users  
-- Inbox and Sent Items pages  
-- Database-validated email storage and retrieval
-
-### Database-Driven Architecture
-- MySQL relational database storing:
-  - Users
-  - Login credentials
-  - Email messages
-
-### Modular Codebase
-- db.js for all database operations  
-- server.js for routing and server setup  
-- views/ for all HTML files (login, register, dashboard, etc.)
 
 ---
 
-## Technologies Used
+## Steps to Set Up and Run the Application
 
-| Layer | Technologies |
-|-------|--------------|
-| Back-End | Node.js, Express, MySQL |
-| Front-End | HTML5, Bootstrap, Vanilla JavaScript (Fetch API) |
-| Authentication | Express-Session, Node.js Crypto (SHA-256) |
+#### Step 1: Register An Account by navigating to the register button on the welcome page.
+#### Step 2: After successfully creating an account you will be sent to the login page, please enter the email and password that you choose when you created your account
+#### Step 3: After logging in you will be sent to the home page from there you can navigate to: Inbox, Sent Emails, Send A Email
+#### Inbox:   Shows you all the messages you have received 
+#### Sent:  Shows you all the emails you sent.
+#### Send:  Send email is where you go to send an email.
 
----
-
-## Setup & Installation
-
-### Prerequisites
-- Node.js (LTS recommended)  
-- MySQL server running locally  
+#### Important Note: you can only send emails to other people in the database meaning they must have an account w Empire Email to send emails to them.
 
 ---
 
-## Steps to Run Locally
+## Demo Created Accounts
 
-### Step 1: Clone the repository
+### Explanation
+I created these demo accounts for testing purposes.
+Along with the accounts I have included sets of emails between certain accounts.
+These are all in the db_dump.sql and will be ready for use upon setup.
 
-    git clone https://github.com/ChristieLiam/Empire-Email.git
+Feel free to check some of them out!
 
-### Step 2: Navigate into the project directory
+### Accounts
 
-    cd Empire-Email
+* **Email:** ```luke.skywalker@starwars.com``` **Password:** ``` farmB0y$ ```
+* **Email:** ```leia.organa@starwars.com``` **Password:** ``` H3!pMe0b1Wan ```
+* **Email:** ```han.solo@starwars.com``` **Password:** ``` N3v3rT3llM3Th30dds ```
+* **Email:** ```chewbacca@starwars.com``` **Password:** ``` R0@rrrRgh! ```
+* **Email:** ```obiwan.kenobi@starwars.com``` **Password:** ``` H1ghGr0und123 ```
+* **Email:** ```anakin.skywalker@starwars.com``` **Password:** ``` 1Hat3$and ```
+* **Email:** ```c3po@starwars.com``` **Password:** ``` 0v3r9000F0rm$ ```
+* **Email:** ```r2d2@starwars.com``` **Password:** ``` b333pB0o0P$ ```
+* **Email:** ```darth.vader@starwars.com``` **Password:** ``` 1Hat3$and ```
+* **Email:** ```palpatine@starwars.com``` **Password:** ``` Unl!mt3dP0w3r ```
+* **Email:** ```boba.fett@starwars.com``` **Password:** ``` F3@rl3$$Hunt3r ```
+* **Email:** ```lando.calrissian@starwars.com``` **Password:** ``` Sm00thC@rdD34l3r ```
+* **Email:** ```mace.windu@starwars.com``` **Password:** ``` Purpl3S@b3r! ```
+* **Email:** ```yoda@starwars.com``` **Password:** ``` D0orD0N0t_Th3r3!sN0Try ```
+* **Email:** ```quigon.jinn@starwars.com```**Password:** ``` 0n3W1thTh3FOrc3 ```
 
-### Step 3: Install dependencies
-
-    npm install
-
-This installs express, mysql, express-session, and other required packages.
-
-### Step 4: Configure the MySQL database
-
-1. Make sure MySQL is running.  
-2. Create a new database:
-
-        CREATE DATABASE email_service;
-
-3. Update the MySQL connection details in db.js (host, user, password).  
-4. Import the provided SQL dump located at:
-
-        assets/bootstrap/sql/db_dump.sql
-
-This file creates all required tables (user_info, login, emails) and inserts demo accounts.
-
-### Step 5: Start the server
-
-    node server.js
-
-### Step 6: Open the application
-Visit in your browser:
-
-    http://localhost:8000
-
----
-
-## Demo Accounts
-
-These accounts are included in the SQL dump for testing:
-
-| Email | Password |
-|-------|----------|
-| luke.skywalker@starwars.com | farmB0y$ |
-| leia.organa@starwars.com | H3!pMe0b1Wan |
-| han.solo@starwars.com | N3v3rT3llM3Th30dds |
-| chewbacca@starwars.com | R0@rrrRgh! |
-| obiwan.kenobi@starwars.com | H1ghGr0und123 |
-| anakin.skywalker@starwars.com | 1Hat3$and |
-| c3po@starwars.com | 0v3r9000F0rm$ |
-| r2d2@starwars.com | b333pB0o0P$ |
-| darth.vader@starwars.com | 1Hat3$and |
-| palpatine@starwars.com | Unl!mt3dP0w3r |
-| boba.fett@starwars.com | F3@rl3$$Hunt3r |
-| lando.calrissian@starwars.com | Sm00thC@rdD34l3r |
-| mace.windu@starwars.com | Purpl3S@b3r! |
-| yoda@starwars.com | D0orD0N0t_Th3r3!sN0Try |
-| quigon.jinn@starwars.com | 0n3W1thTh3FOrc3 |
-
-(Note: Anakin and Vader share the same password.)
+That's odd Anakin and Vader have the same password..... wonder why!?
 
 ---
 
 ## File Structure
+```
+lchristie/
+├── assets/
+│   └── bootstrap/
+│       └──  sql/
+│            ├── db_dump.sql
+│            └── db_dump_sql.zip
+├── views/
+│   ├── error.html
+│   ├── index.html
+│   ├── login_page.html
+│   ├── register_page.html
+│   └── welcome_page.html
+├── db.js
+├── server.js
+└── README.md
+```
+The chosen file structure for the Empire Email application is designed to maintain organization, scalability, and clarity. 
+The views/ folder houses all the HTML files for different pages, making it easy to manage and update specific views like the login, registration, and home pages. 
+The assets/ folder organizes external libraries, including Bootstrap, and stores database-related files like SQL dumps in a dedicated db/ subfolder, ensuring clear separation between code, resources, and data. 
+The db.js file handles database interactions, allowing for a modular and maintainable backend, while server.js serves as the entry point for the Node.js server, managing routes and server configurations. Lastly, the README.md provides essential documentation for developers and users, enhancing project understanding and collaboration. 
+This structure ensures the project remains well-organized, easy to navigate, and adaptable for future updates or extensions.
 
-    Empire-Email/
-    ├── assets/
-    │   └── bootstrap/
-    │       └── sql/
-    │            ├── db_dump.sql
-    │            └── db_dump_sql.zip
-    ├── views/
-    │   ├── error.html
-    │   ├── index.html
-    │   ├── login_page.html
-    │   ├── register_page.html
-    │   └── welcome_page.html
-    ├── db.js
-    ├── server.js
-    └── README.md
 
----
 
-## Explanation of Structure
 
-- views/ – HTML pages used by the application (login, register, home, error, etc.)  
-- assets/ – Bootstrap and SQL directories for styling and database setup  
-- db.js – MySQL connection and all database methods  
-- server.js – Express server configuration and routing  
-- README.md – Project documentation  
 
-This file structure ensures clean separation of concerns, strong organization, and easy maintenance.
 
----
 
-## Future Improvements
 
-- Password reset functionality  
-- SMTP integration for real outbound email  
-- User settings page  
-- Search and filtering of emails  
-- Optional dark mode  
