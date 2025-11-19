@@ -2,16 +2,15 @@
 
 ## This Version Of The Email Service Is Being Overhauled  |  Site may not be fully functional.
 
-#### What to expecet...
+## Future Improvements
 
-* Updated Design
-* New Pages
-* New Options
-* New Menus
-* Esseantily a Full Redsign and more
-
-  I will add more features as I develop them. (They will come to mind)
-
+- Password reset functionality  
+- SMTP integration for real outbound email  
+- User settings page  
+- Search and filtering of emails  
+- Optional dark mode  
+- Updated Design
+- New Pages
 
 ---
 
@@ -160,11 +159,3 @@ These accounts are included in the SQL dump for testing:
 This file structure ensures clean separation of concerns, strong organization, and easy maintenance.
 
 ---
-
-## Future Improvements
-
-- Password reset functionality  
-- SMTP integration for real outbound email  
-- User settings page  
-- Search and filtering of emails  
-- Optional dark mode  
